@@ -29,3 +29,4 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comment
         fields = ['url', 'id', 'message', 'is_reviewed', 'author']
+
