@@ -25,7 +25,8 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
+    post_id = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all(), source='post', required=False)
 
     class Meta:
         model = Comment
-        fields = ['url', 'id', 'message', 'is_reviewed', 'author']
+        fields = ['url', 'id', 'message', 'author', 'post_id']
